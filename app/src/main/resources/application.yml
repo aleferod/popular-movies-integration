@@ -1,7 +1,11 @@
 micronaut:
   application:
     name: popularMoviesIntegration
+  jms:
+    sqs:
+      enabled: true
 netty:
   default:
     allocator:
       max-order: 3
+

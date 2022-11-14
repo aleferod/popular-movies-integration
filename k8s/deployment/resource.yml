@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: aleferod/popular-movies-integration:1.0.1
+          image: aleferod/popular-movies-integration:development
           ports:
             - containerPort: 8080
           env:

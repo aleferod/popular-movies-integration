@@ -16,14 +16,15 @@ import org.slf4j.LoggerFactory
 @Controller("/v1")
 class PopularMovieController(
     private val movieDbUseCase: MovieDbUseCase,
-    private val rateMovieUseCase: RateMovieUseCase,
-    private val LOGGER: Logger = LoggerFactory.getLogger(PopularMovieController::class.java)
-) {
+    private val rateMovieUseCase: RateMovieUseCase
+    ) {
+
+    private val logger: Logger = LoggerFactory.getLogger(PopularMovieController::class.java)
 
     @Get("/popular")
     fun getPopularMovies(headers: HttpHeaders): HttpResponse<MovieDbDto> {
         val correlationId = headers.get("x-correlation-id")
-        LOGGER.info("Receiving a request from correlationId $correlationId")
+        logger.info("Receiving a request from correlationId $correlationId")
         val response = movieDbUseCase.getPopularMovies()
         return HttpResponse.status<MovieDbDto?>(HttpStatus.OK)
             .body(response)
@@ -32,7 +33,7 @@ class PopularMovieController(
     @Post("/rate")
     fun rateMovie(@Body rateMovieDto: RateMovieDto, headers: HttpHeaders): RateMovieDto {
         val correlationId = headers.get("x-correlation-id")
-        LOGGER.info("Receiving a request from correlationId $correlationId")
+        logger.info("Receiving a request from correlationId $correlationId")
         rateMovieUseCase.rateMovie(rateMovieDto)
         return rateMovieDto
     }

@@ -10,15 +10,16 @@ import java.io.StringWriter
 
 @Singleton
 class RateMovieUseCase(
-    private val rateMovieSqsProducer: RateMovieSqsProducer,
-    private val LOGGER: Logger = LoggerFactory.getLogger(MovieDbUseCase::class.java)
-) {
+    private val rateMovieSqsProducer: RateMovieSqsProducer
+    ) {
+
+    private val logger: Logger = LoggerFactory.getLogger(RateMovieUseCase::class.java)
 
     fun rateMovie(rateMovieDto: RateMovieDto) {
         try {
-            LOGGER.info("Sending rate as message to SQS rate-movie queue")
+            logger.info("Sending rate as message to SQS rate-movie queue")
             rateMovieSqsProducer.send(rateMovieDto)
-            LOGGER.info("Message sent to SQS rate-movie queue")
+            logger.info("Message sent to SQS rate-movie queue")
         } catch (exception: Exception) {
             val stringWriter = StringWriter()
             exception.printStackTrace(PrintWriter(stringWriter))

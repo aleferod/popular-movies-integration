@@ -10,15 +10,16 @@ import java.io.StringWriter
 
 @Singleton
 class MovieDbUseCase(
-    private val movieDbClient: MovieDbClient,
-    private val LOGGER: Logger = LoggerFactory.getLogger(MovieDbUseCase::class.java)
-) {
+    private val movieDbClient: MovieDbClient
+    ) {
+
+    private val logger: Logger = LoggerFactory.getLogger(MovieDbUseCase::class.java)
 
     fun getPopularMovies(): MovieDbDto {
         try {
-            LOGGER.info("Initializing the request to MovieDB external API")
+            logger.info("Initializing the request to MovieDB external API")
             val popularMovies = movieDbClient.getPopularMovies()
-            LOGGER.info("Data received successfully from MovieDB API")
+            logger.info("Data received successfully from MovieDB API")
             return popularMovies
         } catch (exception: Exception) {
             val stringWriter = StringWriter()

@@ -2,28 +2,37 @@ package com.popular.movies.application
 
 import com.popular.movies.infrastructure.rest.dto.MovieDbDto
 import com.popular.movies.infrastructure.rest.dto.RateMovieDto
+import io.micronaut.http.HttpHeaders
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 
 @Controller("/v1")
-class PopularMovieController (
-        private val movieDbUseCase: MovieDbUseCase,
-        private val rateMovieUseCase: RateMovieUseCase
-        ){
+class PopularMovieController(
+    private val movieDbUseCase: MovieDbUseCase,
+    private val rateMovieUseCase: RateMovieUseCase,
+    private val LOGGER: Logger = LoggerFactory.getLogger(PopularMovieController::class.java)
+) {
 
     @Get("/popular")
-    fun getPopularMovies() : HttpResponse<MovieDbDto> {
+    fun getPopularMovies(headers: HttpHeaders): HttpResponse<MovieDbDto> {
+        val correlationId = headers.get("x-correlation-id")
+        LOGGER.info("Receiving a request from correlationId $correlationId")
         val response = movieDbUseCase.getPopularMovies()
         return HttpResponse.status<MovieDbDto?>(HttpStatus.OK)
             .body(response)
     }
 
     @Post("/rate")
-    fun rateMovie(@Body  rateMovieDto: RateMovieDto) : RateMovieDto {
+    fun rateMovie(@Body rateMovieDto: RateMovieDto, headers: HttpHeaders): RateMovieDto {
+        val correlationId = headers.get("x-correlation-id")
+        LOGGER.info("Receiving a request from correlationId $correlationId")
         rateMovieUseCase.rateMovie(rateMovieDto)
         return rateMovieDto
     }

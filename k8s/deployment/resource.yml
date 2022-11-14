@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: popular-movies-integration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: popular-movies-integration
+  template:
+    metadata:
+      labels:
+        app: popular-movies-integration
+    spec:
+      containers:
+        - name: app
+          image: aleferod/popular-movies-integration:1.0.1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: aws.access-key
+              value: admin
+            - name: aws.secret-access-key
+              value: admin
+          imagePullPolicy: Always

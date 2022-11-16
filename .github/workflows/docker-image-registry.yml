@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: build app
+      run: gradle clean build
     - uses: actions/checkout@v2
     - name: docker login
       env:

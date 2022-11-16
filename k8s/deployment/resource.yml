@@ -23,10 +23,22 @@ spec:
               protocol: TCP
               containerPort: 4566
           env:
+            - name: APP_PORT
+              value: "8080"
             - name: AWS_DEFAULT_REGION
               value: us-east-1
             - name: AWS_ACCESS_KEY_ID
               value: admin
             - name: AWS_SECRET_ACCESS_KEY
               value: admin
+            - name: THE_MOVIE_DB_URL
+              value: https://api.themoviedb.org/3
+            - name: THE_MOVIE_DB_API_KEY
+              value: edac97aabe9e5bc96b11219190aab292
+            - name: RATE_MOVIE_SQS_QUEUE_NAME
+              value: rate-movie
+            - name: AWS_LOCALSTACK_URL
+              value: http://192.168.49.2:31240
+            - name: AWS_LOCALSTACK_REGION
+              value: us-east-1
           imagePullPolicy: Always

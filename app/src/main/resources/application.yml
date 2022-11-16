@@ -21,7 +21,7 @@ rate:
         name: ${RATE_MOVIE_SQS_QUEUE_NAME:rate-movie}
 aws:
   localstack:
-    url: ${AWS_LOCALSTACK_URL:`http://localhost:4566`}
+    url: ${AWS_LOCALSTACK_URL:`http://192.168.49.2:31240`}
     region: ${AWS_LOCALSTACK_REGION:us-east-1}
 
 

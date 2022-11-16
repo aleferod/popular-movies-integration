@@ -13,11 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 17
+      working-directory: ./app
       uses: actions/setup-java@v2
       with:
         java-version: 17
         distribution: 'adopt'
     - name: Build with Gradle
+      working-directory: ./app
       run: ./gradlew build
     - name: docker login
       env:
@@ -26,7 +28,8 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file app/Dockerfile --tag aleferod/popular-movies-integration:development
+      working-directory: ./app
+      run: docker build . --file Dockerfile --tag aleferod/popular-movies-integration:development
       
     - name: Docker Push
       run: docker push aleferod/popular-movies-integration:development

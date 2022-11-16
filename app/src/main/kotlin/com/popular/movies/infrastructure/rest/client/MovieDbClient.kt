@@ -4,9 +4,9 @@ import com.popular.movies.infrastructure.rest.dto.MovieDbDto
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 
-@Client("https://api.themoviedb.org/3")
+@Client("\${movie.db.url}")
 interface MovieDbClient {
 
-    @Get("/movie/popular?api_key=edac97aabe9e5bc96b11219190aab292")
+    @Get("/movie/popular?api_key=\${movie.db.apikey}")
     fun getPopularMovies(): MovieDbDto
 }

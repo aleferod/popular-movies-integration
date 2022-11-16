@@ -16,10 +16,17 @@ spec:
         - name: app
           image: aleferod/popular-movies-integration:development
           ports:
-            - containerPort: 8080
+            - name: http
+              protocol: TCP
+              containerPort: 80
+            - name: localstack
+              protocol: TCP
+              containerPort: 4566
           env:
-            - name: aws.access-key
+            - name: AWS_DEFAULT_REGION
+              value: us-east-1
+            - name: AWS_ACCESS_KEY_ID
               value: admin
-            - name: aws.secret-access-key
+            - name: AWS_SECRET_ACCESS_KEY
               value: admin
           imagePullPolicy: Always

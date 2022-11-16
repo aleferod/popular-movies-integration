@@ -1,6 +1,8 @@
 micronaut:
   application:
     name: popularMoviesIntegration
+  server:
+    port: ${APP_PORT:8081}
   jms:
     sqs:
       enabled: true
@@ -8,4 +10,18 @@ netty:
   default:
     allocator:
       max-order: 3
+movie:
+  db:
+    url: ${THE_MOVIE_DB_URL:`https://api.themoviedb.org/3`}
+    apikey: ${THE_MOVIE_DB_API_KEY:edac97aabe9e5bc96b11219190aab292}
+rate:
+  movie:
+    sqs:
+      queue:
+        name: ${RATE_MOVIE_SQS_QUEUE_NAME:rate-movie}
+aws:
+  localstack:
+    url: ${AWS_LOCALSTACK_URL:`http://localhost:4566`}
+    region: ${AWS_LOCALSTACK_REGION:us-east-1}
+
 

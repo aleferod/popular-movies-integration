@@ -19,7 +19,7 @@ class MovieDbUseCase(
         try {
             logger.info("Initializing the request to MovieDB external API")
             val popularMovies = movieDbClient.getPopularMovies()
-            logger.info("Data received successfully from MovieDB API")
+            logger.info("Data received successfully from MovieDB API. Result size: " + popularMovies.results.size)
             return popularMovies
         } catch (exception: Exception) {
             val stringWriter = StringWriter()

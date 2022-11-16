@@ -9,6 +9,6 @@ import io.micronaut.messaging.annotation.MessageBody
 @JMSProducer(CONNECTION_FACTORY_BEAN_NAME)
 interface RateMovieSqsProducer {
 
-    @Queue("rate-movie")
+    @Queue("\${rate.movie.sqs.queue.name}")
     fun send(@MessageBody rateMovieDto: RateMovieDto)
 }

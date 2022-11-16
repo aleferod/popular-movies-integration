@@ -16,6 +16,7 @@ jobs:
     - name: build app
       run: |
         cd ..
+        cd app
         pwd
         gradle clean build
     - uses: actions/checkout@v2

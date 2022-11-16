@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
 
@@ -21,7 +21,7 @@ jobs:
       run: |
         docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag aleferod/popular-movies-integration:development
+      run: docker build . --file app/Dockerfile --tag aleferod/popular-movies-integration:development
       
     - name: Docker Push
       run: docker push aleferod/popular-movies-integration:development

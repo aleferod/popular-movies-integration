@@ -26,6 +26,7 @@ class PopularMovieController(
         val correlationId = headers.get("x-correlation-id")
         logger.info("Receiving a request from correlationId $correlationId")
         val response = movieDbUseCase.getPopularMovies()
+        logger.info("Finishing get popular movies")
         return HttpResponse.status<MovieDbDto?>(HttpStatus.OK)
             .body(response)
     }
@@ -35,6 +36,7 @@ class PopularMovieController(
         val correlationId = headers.get("x-correlation-id")
         logger.info("Receiving a request from correlationId $correlationId")
         rateMovieUseCase.rateMovie(rateMovieDto)
+        logger.info("finishing ")
         return rateMovieDto
     }
 }

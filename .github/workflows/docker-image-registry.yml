@@ -15,9 +15,7 @@ jobs:
     steps:
     - name: build app
       run: |
-        cd ..
         ls
-        pwd
         gradle clean build
     - uses: actions/checkout@v2
     - name: docker login

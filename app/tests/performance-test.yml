@@ -1,0 +1,11 @@
+config:
+  target: "http://192.168.49.2:31831"
+  phases:
+    - duration: 120
+      arrivalRate: 10000
+scenarios:
+  - flow:
+      - get:
+          url: "/v1/popular"
+          headers:
+            x-correlation-id: "b82eb969-fd40-4e6f-8d50-830fe16c1160"

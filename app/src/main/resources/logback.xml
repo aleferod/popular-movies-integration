@@ -27,21 +27,6 @@ under the License.
           http://logback.qos.ch/manual/layouts.html#ClassicPatternLayout
       for details).
     -->
-    <appender name="socket" class="com.splunk.logging.TcpAppender">
-        <RemoteHost>127.0.0.1</RemoteHost>
-        <Port>15000</Port>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%thread %level: %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <logger name="splunk.logger" additivity="false" level="INFO">
-        <appender-ref ref="socket"/>
-    </logger>
-
-    <root level="INFO">
-        <appender-ref ref="socket"/>
-    </root>
 
     <appender name="http" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
         <url>http://localhost:8088</url>
@@ -50,8 +35,6 @@ under the License.
         <sourcetype>log4j</sourcetype>
         <messageFormat>text</messageFormat>
         <middleware>HttpEventCollectorUnitTestMiddleware</middleware>
-        <connectTimeout>5000</connectTimeout>
-        <terminationTimeout>2000</terminationTimeout>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%msg</pattern>
         </layout>

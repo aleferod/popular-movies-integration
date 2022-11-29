@@ -44,4 +44,14 @@ spec:
               value: http://192.168.49.2:31240
             - name: AWS_LOCALSTACK_REGION
               value: us-east-1
+            - name: SPLUNK_URL
+              value: http://192.168.49.2:32635
+            - name: SPLUNK_TOKEN
+              value: 165e0724-8217-42dd-b58b-205e99b95c66
+            - name: SPLUNK_INDEX
+              value: popular-movies-integration
+            - name: SPLUNK_SOURCE
+              value: http-event-logs
+            - name: SPLUNK_SOURCE_TYPE
+              value: log4j
           imagePullPolicy: Always

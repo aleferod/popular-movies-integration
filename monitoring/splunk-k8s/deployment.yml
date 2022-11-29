@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      splunk: web
+  template:
+    metadata:
+      labels:
+        splunk: web
+    spec:
+      containers:
+      - name: splunk-site
+        image: splunk/splunk:8.1.12
+        ports:
+        - containerPort: 8000
+        - containerPort: 9997
+        - containerPort: 8088
+        - containerPort: 1514
+        env:
+          - name: SPLUNK_START_ARGS
+            value: "--accept-license"
+          - name: SPLUNK_ENABLE_LISTEN
+            value: "9997"
+          - name: SPLUNK_ADD
+            value: "tcp 1514"
+          - name: SPLUNK_USER
+            value: root
+          - name: SPLUNK_PASSWORD
+            value: admin2022!@
+        imagePullPolicy: Always

@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: localstack
+  name: localstack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: localstack
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: localstack
+    spec:
+      containers:
+      - env:
+        - name: AWS_ACCESS_KEY_ID
+          value: admin
+        - name: AWS_DEFAULT_REGION
+          value: sa-east-1
+        - name: AWS_SECRET_ACCESS_KEY
+          value: admin
+        - name: DATA_DIR
+        - name: DEBUG
+        - name: DEFAULT_REGION
+          value: sa-east-1
+        - name: DISABLE_CORS_CHECKS
+          value: "1"
+        - name: DOCKER_HOST
+          value: unix:///var/run/docker.sock
+        - name: HOST_TMP_FOLDER
+          value: /tmplocalstack
+        - name: LAMBDA_EXECUTOR
+        - name: SERVICES
+          value: s3,dynamodb,sqs,apigateway,cloudformation,cloudwatch,ec2,iam,kinesis,kms,lambda,route53,secretsmanager,sns,ssm,stepfuncstions,sts
+        image: localstack/localstack
+        imagePullPolicy: ""
+        name: aws-localstack
+        ports:
+        - containerPort: 4510
+        - containerPort: 4511
+        - containerPort: 4512
+        - containerPort: 4513
+        - containerPort: 4514
+        - containerPort: 4515
+        - containerPort: 4516
+        - containerPort: 4517
+        - containerPort: 4518
+        - containerPort: 4519
+        - containerPort: 4520
+        - containerPort: 4521
+        - containerPort: 4522
+        - containerPort: 4523
+        - containerPort: 4524
+        - containerPort: 4525
+        - containerPort: 4526
+        - containerPort: 4527
+        - containerPort: 4528
+        - containerPort: 4529
+        - containerPort: 4530
+        - containerPort: 4566
+        - containerPort: 4571
+        resources: {}
+        volumeMounts:
+        - mountPath: /tmp/localstack
+          name: localstack-claim0
+        - mountPath: /var/run/docker.sock
+          name: localstack-claim1
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: localstack-claim0
+        persistentVolumeClaim:
+          claimName: localstack-claim0
+      - name: localstack-claim1
+        persistentVolumeClaim:
+          claimName: localstack-claim1
+status: {}

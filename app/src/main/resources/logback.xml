@@ -1,7 +1,7 @@
 <configuration>
 
     <appender name="STDOUT" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
-        <url>http://localhost:8000</url>
+        <url>http://localhost:8088</url>
         <index>popular-movies-integration</index>
         <token>b2162ba7-9c68-451a-afba-696db29419f0</token>
         <batch_size_count>10</batch_size_count>

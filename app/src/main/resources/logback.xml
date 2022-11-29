@@ -53,9 +53,8 @@ under the License.
     -->
 
     <appender name="http" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
-        <url>http://localhost:8088</url>
-        <token>b2162ba7-9c68-451a-afba-696db29419f0</token>
-        <host>localhost</host>
+        <url>http://192.168.49.2:32635</url>
+        <token>165e0724-8217-42dd-b58b-205e99b95c66</token>
         <index>popular-movies-integration</index>
         <source>http-event-logs</source>
         <sourcetype>log4j</sourcetype>

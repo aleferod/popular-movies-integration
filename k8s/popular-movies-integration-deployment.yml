@@ -22,6 +22,9 @@ spec:
             - name: localstack
               protocol: TCP
               containerPort: 4566
+            - name: splunk
+              protocol: TCP
+              containerPort: 8000
           env:
             - name: APP_PORT
               value: "8081"

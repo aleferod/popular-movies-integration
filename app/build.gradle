@@ -11,6 +11,9 @@ group = "com.popular.movies"
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://splunk.jfrog.io/splunk/ext-releases-local'
+    }
 }
 
 dependencies {
@@ -30,7 +33,7 @@ dependencies {
 
     runtimeOnly("ch.qos.logback.contrib:logback-json-classic:0.1.5")
     runtimeOnly("ch.qos.logback.contrib:logback-jackson:0.1.5")
-
+    runtimeOnly("com.splunk.logging:splunk-library-javalogging:1.8.0")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

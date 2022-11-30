@@ -47,7 +47,7 @@ spec:
             - name: SPLUNK_URL
               value: http://192.168.49.2:32635
             - name: SPLUNK_TOKEN
-              value: 165e0724-8217-42dd-b58b-205e99b95c66
+              value: db5bf065-0d35-4b73-8354-8fb3ad2432f3
             - name: SPLUNK_INDEX
               value: popular-movies-integration
             - name: SPLUNK_SOURCE

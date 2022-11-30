@@ -26,6 +26,7 @@ class MovieDbUseCase(
             val stringWriter = StringWriter()
             exception.printStackTrace(PrintWriter(stringWriter))
             val exceptionAsString = stringWriter.toString()
+            logger.error("Could not get data from MovieDB API. Reason: $exceptionAsString")
             throw RuntimeException("Could not get data from MovieDB API. Reason: $exceptionAsString")
         }
     }

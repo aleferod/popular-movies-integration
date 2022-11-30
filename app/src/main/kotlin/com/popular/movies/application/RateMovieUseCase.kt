@@ -24,6 +24,7 @@ class RateMovieUseCase(
             val stringWriter = StringWriter()
             exception.cause?.cause?.printStackTrace(PrintWriter(stringWriter))
             val exceptionAsString = stringWriter.toString()
+            logger.error("Could not send movie rated to the SQS rate-movie queue. Reason: $exceptionAsString")
             throw RuntimeException("Could not send movie rated to the SQS rate-movie queue. Reason: $exceptionAsString")
         }
     }

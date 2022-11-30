@@ -1,8 +1,8 @@
 config:
   target: "http://192.168.49.2:31831"
   phases:
-    - duration: 120
-      arrivalRate: 10000
+    - duration: 30
+      arrivalRate: 100
 scenarios:
   - flow:
       - get:

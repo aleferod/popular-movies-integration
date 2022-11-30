@@ -3,6 +3,7 @@ package com.popular.movies.application
 import com.popular.movies.infrastructure.rest.client.MovieDbClient
 import com.popular.movies.infrastructure.rest.dto.MovieDbDto
 import jakarta.inject.Singleton
+import org.reactivestreams.Publisher
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.io.PrintWriter
@@ -15,11 +16,11 @@ class MovieDbUseCase(
 
     private val logger: Logger = LoggerFactory.getLogger(MovieDbUseCase::class.java)
 
-    fun getPopularMovies(): MovieDbDto {
+    fun getPopularMovies(): Publisher<MovieDbDto> {
         try {
             logger.info("Initializing the request to MovieDB external API")
             val popularMovies = movieDbClient.getPopularMovies()
-            logger.info("Data received successfully from MovieDB API. Result size: " + popularMovies.results.size)
+            logger.info("Data received successfully from MovieDB API. Result size: $popularMovies")
             return popularMovies
         } catch (exception: Exception) {
             val stringWriter = StringWriter()

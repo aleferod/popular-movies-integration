@@ -9,6 +9,7 @@ import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
+import org.reactivestreams.Publisher
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -22,11 +23,11 @@ class PopularMovieController(
     private val logger: Logger = LoggerFactory.getLogger(PopularMovieController::class.java)
 
     @Get("/popular")
-    fun getPopularMovies(headers: HttpHeaders): HttpResponse<MovieDbDto> {
+    fun getPopularMovies(headers: HttpHeaders): HttpResponse<Publisher<MovieDbDto>> {
         val correlationId = headers.get("x-correlation-id")
         logger.info("Receiving a request from correlationId $correlationId")
         val response = movieDbUseCase.getPopularMovies()
-        return HttpResponse.status<MovieDbDto?>(HttpStatus.OK)
+        return HttpResponse.status<Publisher<MovieDbDto>>(HttpStatus.OK)
             .body(response)
     }
 

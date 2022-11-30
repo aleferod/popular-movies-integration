@@ -53,11 +53,11 @@ under the License.
     -->
 
     <appender name="http" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
-        <url>http://192.168.49.2:32635</url>
-        <token>165e0724-8217-42dd-b58b-205e99b95c66</token>
-        <index>popular-movies-integration</index>
-        <source>http-event-logs</source>
-        <sourcetype>log4js</sourcetype>
+        <url>${SPLUNK_URL}</url>
+        <token>${SPLUNK_TOKEN}</token>
+        <index>${SPLUNK_INDEX}</index>
+        <source>${SPLUNK_SOURCE}</source>
+        <sourcetype>${SPLUNK_SOURCE_TYPE}</sourcetype>
         <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
             <jsonFormatter
                     class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">

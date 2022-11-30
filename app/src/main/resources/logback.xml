@@ -68,6 +68,7 @@ under the License.
         </layout>
     </appender>
 
+
     <logger name="com.popular.movies" additivity="false" level="INFO">
         <appender-ref ref="http"/>
     </logger>

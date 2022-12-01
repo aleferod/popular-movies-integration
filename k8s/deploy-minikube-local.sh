@@ -1,6 +1,6 @@
-kubectl rollout restart deployment popular-movies-integration
+kubectl -n popular-movies-integration rollout restart deployment popular-movies-integration
 kubectl apply -f ./
-aws --endpoint-url=http://192.168.49.2:31240 sqs create-queue --queue-name rate-movie
+aws --endpoint-url=http://192.168.49.2:31554 sqs create-queue --queue-name rate-movie
 
 
 #PERFORMANCE TESTING

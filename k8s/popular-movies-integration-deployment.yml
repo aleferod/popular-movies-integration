@@ -42,7 +42,7 @@ spec:
             - name: RATE_MOVIE_SQS_QUEUE_NAME
               value: rate-movie
             - name: AWS_LOCALSTACK_URL
-              value: http://192.168.49.2:31240
+              value: http://192.168.49.2:31554
             - name: AWS_LOCALSTACK_REGION
               value: us-east-1
             - name: SPLUNK_URL

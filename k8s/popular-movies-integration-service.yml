@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: popular-movies-integration
+  name: popular-movies-integration-service
   namespace: popular-movies-integration
 spec:
   selector:
-    app: popular-movies-integration
+    app: popular-movies-integration-app
   ports:
     - name: http
       port: 80

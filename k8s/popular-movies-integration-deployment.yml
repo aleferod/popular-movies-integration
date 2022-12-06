@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: popular-movies-integration
+  name: popular-movies-integration-app
   namespace: popular-movies-integration
 spec:
   replicas: 1
@@ -56,3 +56,10 @@ spec:
             - name: SPLUNK_SOURCE_TYPE
               value: log4j
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "350m"
+              memory: "128Mi"
+            requests:
+              cpu: "150m"
+              memory: "64Mi"

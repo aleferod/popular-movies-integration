@@ -5,9 +5,10 @@ metadata:
   namespace: popular-movies-integration
 spec:
   maxReplicas: 10
-  minReplicas: 2
+  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: popular-movies-integration
+    name: popular-movies-integration-app
   targetCPUUtilizationPercentage: 50
+
